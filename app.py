@@ -10,8 +10,8 @@ from sklearn.metrics import classification_report, confusion_matrix, precision_r
 import io
 
 # Load model and scaler
-model = joblib.load("SMOTEENN + LightGBM.pkl")
-scaler = joblib.load("scaler.pkl")
+model = joblib.load("model/SMOTEENN + LightGBM.pkl")
+scaler = joblib.load("model/scaler.pkl")
 
 st.set_page_config(page_title="Credit Card Fraud Detection", layout="wide")
 st.title("💳 Credit Card Fraud Detection Demo")
@@ -105,5 +105,6 @@ st.dataframe(pd.DataFrame(report).transpose())
 csv_buffer = io.StringIO()
 pd.DataFrame(report).transpose().to_csv(csv_buffer)
 st.download_button("Download Report as CSV", csv_buffer.getvalue(), "classification_report.csv", "text/csv")
+
 
 
